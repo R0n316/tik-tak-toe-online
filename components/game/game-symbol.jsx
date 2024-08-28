@@ -1,15 +1,14 @@
-import styles from "./game.module.css";
 import {SYMBOL_O, SYMBOL_X} from "./constants";
 
 export function GameSymbol({ symbol }) {
     const getSymbolClassName = (symbol) => {
         if (symbol === SYMBOL_X) {
-            return 'symbol--x';
+            return 'text-red-500';
         }
         if (symbol === SYMBOL_O) {
-            return 'symbol--o';
+            return 'text-green-500';
         }
         return '';
     };
-    return <span className={styles[`symbol ${getSymbolClassName(symbol)}`]}>{symbol}</span>;
+    return <span className={`tet-xl ${getSymbolClassName(symbol)}`}>{symbol}</span>;
 }
