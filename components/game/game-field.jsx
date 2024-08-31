@@ -5,13 +5,13 @@ import GameCell from "@/components/game/game-cell";
 import GameSymbol from "@/components/game/game-symbol";
 import {useGameState} from "@/components/game/use-game-state";
 
-export default function GameField() {
+export default function GameField({playersCount}) {
     const {
         cells,
         currentMove,
         nextMove,
         handleCellClick
-    } = useGameState();
+    } = useGameState(playersCount);
 
     return (
         <GameFieldLayout>

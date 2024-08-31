@@ -1,30 +1,24 @@
-import Profile from "@/components/profile/profile";
-import GameAvatar from "@/components/game/game-avatar";
 import avatarSrc from "@/public/avatar.png";
 import avatar1Src from "@/public/avatar-1.png";
-import crossSrc from "@/public/icons/cross.svg";
-import zeroSrc from "@/public/icons/zero.svg"
+import avatar2Src from "@/public/avatar-2.png";
+import avatar3Src from "@/public/avatar-3.png";
+import PlayerInfo from "@/components/game/player-info";
+import {GAME_SYMBOLS} from "@/components/game/constants";
 
-export default function GameInfo() {
+const players = [
+    {id:1, name: 'Alex', rating: 1230, avatar: avatarSrc, symbol: GAME_SYMBOLS.CROSS},
+    {id:2, name: 'VereIntedinglapotur', rating: 850, avatar: avatar1Src, symbol: GAME_SYMBOLS.ZERO},
+    {id:3, name: 'Kate', rating: 1400, avatar: avatar2Src, symbol: GAME_SYMBOLS.TRIANGLE},
+    {id:4, name: 'Vitalik', rating: 760, avatar: avatar3Src, symbol: GAME_SYMBOLS.SQUARE},
+];
+
+export default function GameInfo({playersCount}) {
     return (
-        <div className={'h-20 shadow-md rounded-2xl mt-[17px] w-full box-border px-8 py-4 bg-white flex items-center'}>
-            <div className={'w-full flex justify-center items-center'}>
-                <div className={'relative'}>
-                    <Profile avatar={avatarSrc}/>
-                    <GameAvatar icon={crossSrc}/>
-                </div>
-
-                <div className={'w-[168px] h-[35px] flex justify-around items-center' +
-                    ' box-border px-3 mx-3 border-x-2 border-slate-200'}>
-                    <div className={'text-xl font-semibold'}>01:08</div>
-                    <div className={'text-xl font-semibold text-orange-600'}>01:08</div>
-                </div>
-
-                <div className={'relative'}>
-                    <Profile avatar={avatar1Src}/>
-                    <GameAvatar icon={zeroSrc}/>
-                </div>
-            </div>
+        <div className={'min-h-20 grid grid-cols-2 gap-5 items-center shadow-md' +
+            ' rounded-2xl mt-[17px] w-full box-border px-8 py-4 bg-white'}>
+            {players.slice(0, playersCount).map((player, index) => {
+                return <PlayerInfo key={player.id} playerInfo={player} isRight={index % 2 === 1}/>
+            })}
         </div>
     )
 }

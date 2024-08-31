@@ -11,7 +11,7 @@ export default function Header() {
         <div className={'w-px h-8 bg-slate-200 mx-6'}/>
         <UiButton className={'w-44'} variant={'primary'} size={'lg'}>Играть</UiButton>
         <button className={'ml-auto flex items-center gap-2 text-start'}>
-            <Profile avatar={avatarSrc}/>
+            <Profile avatar={avatarSrc} rating={1230} name={'Alex'}/>
             <Image src={moreSrc} alt={'more'}/>
         </button>
     </div>

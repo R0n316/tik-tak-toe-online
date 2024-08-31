@@ -5,7 +5,7 @@ import starSrc from '@/public/icons/star.svg'
 import usersCountSrc from '@/public/icons/users-count.svg'
 import timeSrc from '@/public/icons/time.svg'
 
-export function GameTitle() {
+export function GameTitle({playersCount}) {
     return (
         <div className={'flex flex-col'}>
             <div className={'flex items-center'}>
@@ -18,7 +18,7 @@ export function GameTitle() {
             <div className={'flex mb-px items-center text-xs text-slate-400'}>
                 <Image src={starSrc} alt={'star'} className={'mr-3'}/>
                 <Image src={usersCountSrc} alt={'users count'} className={'mr-1'}/>
-                <span className={'text-xs mr-3 text-slate-400'}>2</span>
+                <span className={'text-xs mr-3 text-slate-400'}>{playersCount}</span>
                 <Image src={timeSrc} alt={'time'} className={'mr-1'}/>
                 <span>1 минута на ход</span>
             </div>
