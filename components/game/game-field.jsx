@@ -3,15 +3,8 @@ import GameMoveInfo from "@/components/game/game-move-info";
 import GameGrid from "@/components/game/game-grid";
 import GameCell from "@/components/game/game-cell";
 import GameSymbol from "@/components/game/game-symbol";
-import {useGameState} from "@/components/game/use-game-state";
 
-export default function GameField({playersCount}) {
-    const {
-        cells,
-        currentMove,
-        nextMove,
-        handleCellClick
-    } = useGameState(playersCount);
+export default function GameField({cells, currentMove, nextMove, handleCellClick}) {
 
     return (
         <GameFieldLayout>
