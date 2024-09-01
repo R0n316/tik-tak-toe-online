@@ -7,7 +7,7 @@ import {useState} from "react";
 import {useGameState} from "@/components/game/use-game-state";
 
 export default function HomePage(){
-    const [playersCount] = useState(2);
+    const [playersCount] = useState(4);
     const {
         cells,
         currentMove,

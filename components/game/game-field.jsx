@@ -13,7 +13,7 @@ export default function GameField({cells, currentMove, nextMove, handleCellClick
                 {cells.map((symbol, index) => {
                     return (
                         <GameCell key={index} onClick={() => handleCellClick(index)}
-                                  isWinner={winnerSequence?.includes(index)}>
+                                  isWinner={winnerSequence?.includes(index)} symbol={symbol}>
                             {symbol && <GameSymbol className={'w-5 h-5'} symbol={symbol}/>}
                         </GameCell>
                     )
