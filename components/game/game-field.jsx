@@ -4,7 +4,8 @@ import GameGrid from "@/components/game/game-grid";
 import GameCell from "@/components/game/game-cell";
 import GameSymbol from "@/components/game/game-symbol";
 
-export default function GameField({cells, currentMove, nextMove, handleCellClick, winnerSequence}) {
+export default function GameField({cells, currentMove, nextMove, handleCellClick,
+                                      winnerSequence, winnerSymbol}) {
 
     return (
         <GameFieldLayout>
@@ -13,7 +14,10 @@ export default function GameField({cells, currentMove, nextMove, handleCellClick
                 {cells.map((symbol, index) => {
                     return (
                         <GameCell key={index} onClick={() => handleCellClick(index)}
-                                  isWinner={winnerSequence?.includes(index)} symbol={symbol}>
+                                  isWinner={winnerSequence?.includes(index)}
+                                  symbol={symbol}
+                                  disabled={winnerSymbol}
+                        >
                             {symbol && <GameSymbol className={'w-5 h-5'} symbol={symbol}/>}
                         </GameCell>
                     )

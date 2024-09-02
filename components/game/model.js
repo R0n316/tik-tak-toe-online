@@ -1,7 +1,8 @@
 import {MOVE_ORDER} from "@/components/game/constants";
 
-export function getNextMove(currentMove, playersCount) {
-    const slicedMoveOrder = MOVE_ORDER.slice(0, playersCount);
+export function getNextMove(currentMove, playersCount, playersTimeOver) {
+    const slicedMoveOrder = MOVE_ORDER.slice(0, playersCount)
+        .filter(symbol => !playersTimeOver.includes(symbol));
     const nextMoveIndex = slicedMoveOrder.indexOf(currentMove) + 1;
     return slicedMoveOrder[nextMoveIndex] ?? slicedMoveOrder[0];
 }
@@ -30,6 +31,13 @@ export function computeWinner(cells, sequenceSize = 5, fieldSize = 19) {
             result[1].push(fieldSize * (i - gap) + (i - gap) + index);
             result[2].push(-fieldSize * (i - gap) + (i - gap) + index);
             result[3].push(fieldSize * (i - gap) + index);
+        }
+
+        const x = index % fieldSize;
+        if(x < gap || x >= fieldSize - gap) {
+            result.shift();
+            result.shift();
+            result.shift();
         }
         return result;
     }

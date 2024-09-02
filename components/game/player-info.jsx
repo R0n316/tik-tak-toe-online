@@ -2,8 +2,8 @@ import Profile from "@/components/profile/profile";
 import GameAvatar from "@/components/game/game-avatar";
 import {useEffect, useState} from "react";
 
-export default function PlayerInfo({playerInfo, isRight, isTimerRunning}) {
-    const [seconds, setSeconds] = useState(60);
+export default function PlayerInfo({playerInfo, isRight, isTimerRunning, onTimeOver}) {
+    const [seconds, setSeconds] = useState(4);
 
     const minutesString = String(Math.floor(seconds / 60)).padStart(2,'0');
     const secondsString = String(seconds % 60).padStart(2,'0')
@@ -20,6 +20,12 @@ export default function PlayerInfo({playerInfo, isRight, isTimerRunning}) {
             }
         }
     }, [isTimerRunning]);
+
+    useEffect(() => {
+        if(seconds === 0) {
+            onTimeOver();
+        }
+    }, [seconds]);
 
     return (
         <div className={`relative flex items-center ${isRight ? 'flex-row-reverse' : ''}`}>

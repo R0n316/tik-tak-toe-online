@@ -7,13 +7,15 @@ import {useState} from "react";
 import {useGameState} from "@/components/game/use-game-state";
 
 export default function HomePage(){
-    const [playersCount] = useState(4);
+    const [playersCount] = useState(2);
     const {
         cells,
         currentMove,
         nextMove,
         handleCellClick,
-        winnerSequence
+        winnerSequence,
+        handlePlayerTimeOver,
+        winnerSymbol
     } = useGameState(playersCount);
 
     return (
@@ -21,7 +23,11 @@ export default function HomePage(){
             <Header/>
             <GameContainer>
                 <GameTitle playersCount={playersCount}/>
-                <GameInfo playersCount={playersCount} currentMove={currentMove}/>
+                <GameInfo playersCount={playersCount}
+                          currentMove={currentMove}
+                          hasWinner={winnerSymbol}
+                          onPlayerTimeOver={handlePlayerTimeOver}
+                />
                 <GameField playersCount={playersCount}
                            cells={cells}
                            currentMove={currentMove}
