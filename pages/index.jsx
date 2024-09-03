@@ -5,6 +5,8 @@ import GameInfo from "@/components/game/game-info";
 import GameField from "@/components/game/game-field";
 import {useState} from "react";
 import {useGameState} from "@/components/game/use-game-state";
+import UiModal from "@/components/ui-kit/ui-modal";
+import UiButton from "@/components/ui-kit/ui-button";
 
 export default function HomePage(){
     const [playersCount] = useState(2);
@@ -28,6 +30,16 @@ export default function HomePage(){
                           hasWinner={winnerSymbol}
                           onPlayerTimeOver={handlePlayerTimeOver}
                 />
+                <UiModal width={'md'} isOpen={winnerSymbol} onClose={() => console.log('close modal')}>
+                    <UiModal.Header>Игра завершена!</UiModal.Header>
+                    <UiModal.Body>
+                        <div className={'text-sm'}>Победитель: <span className={'text-teal-600'}>Alex</span></div>
+                    </UiModal.Body>
+                    <UiModal.Footer>
+                        <UiButton size={'md'} variant={'outline'}>Вернуться</UiButton>
+                        <UiButton size={'md'} variant={'primary'}>Играть снова</UiButton>
+                    </UiModal.Footer>
+                </UiModal>
                 <GameField playersCount={playersCount}
                            cells={cells}
                            currentMove={currentMove}
