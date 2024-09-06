@@ -43,6 +43,11 @@ export function useGameState(playersCount) {
         });
     }
 
+    const defineWinner = (players, symbol) => {
+        const winner = players.find(player => player.symbol === symbol);
+        return winner ? winner.name : null; // TODO по хорошему возвращать объект игрока, а не только его имя
+    }
+
 
     return {
         cells,
@@ -51,6 +56,7 @@ export function useGameState(playersCount) {
         handleCellClick,
         handlePlayerTimeOver,
         winnerSequence,
-        winnerSymbol
+        winnerSymbol,
+        defineWinner
     }
 }
