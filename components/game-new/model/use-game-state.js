@@ -1,6 +1,7 @@
 import {useState} from "react";
-import {GAME_SYMBOLS} from "@/components/game/constants";
-import {computeWinner, getNextMove} from "@/components/game/model";
+import {computeWinner} from "@/components/game-new/model/compute-winner";
+import {getNextMove} from "@/components/game-new/model/get-next-move";
+import {GAME_SYMBOLS} from "@/components/game-new/constants";
 
 export function useGameState(playersCount) {
 
@@ -13,7 +14,7 @@ export function useGameState(playersCount) {
     const winnerSequence = computeWinner(cells);
     const nextMove = getNextMove(currentMove, playersCount, playersTimeOver);
 
-    const winnerSymbol = nextMove === currentMove ? currentMove : winnerSequence?.[0];
+    const winnerSymbol = nextMove === currentMove ? currentMove : cells[winnerSequence?.[0]];
 
     const handleCellClick = (index) => {
         setGameState(lastGameState => {
@@ -43,7 +44,6 @@ export function useGameState(playersCount) {
         });
     }
 
-
     return {
         cells,
         currentMove,
@@ -51,7 +51,6 @@ export function useGameState(playersCount) {
         handleCellClick,
         handlePlayerTimeOver,
         winnerSequence,
-        winnerSymbol,
-        defineWinner
+        winnerSymbol
     }
 }

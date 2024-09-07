@@ -12,5 +12,5 @@ export default function GameSymbol({ symbol, className }) {
         [GAME_SYMBOLS.TRIANGLE.value]: triangle,
         [GAME_SYMBOLS.SQUARE.value]: square,
     }[symbol.value] ?? cross;
-    return <Image className={className + ' w-3 h-3'} src={icon} alt={icon}/>;
+    return <Image className={className} src={icon} alt={icon}/>;
 }
