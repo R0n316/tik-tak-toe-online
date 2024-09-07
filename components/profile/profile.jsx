@@ -10,6 +10,5 @@ export default function Profile({avatar, rating, name, className}) {
                 <GameRating rating={rating}/>
             </div>
         </div>
-
     )
 }
